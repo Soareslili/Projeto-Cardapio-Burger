@@ -110,28 +110,52 @@ function removeItemCart(name){
 }
 
 addressInput.addEventListener("input", function(event){
-    let inputValue = event.target.value
+    let inputValue = event.target.value;
 
     if(inputValue !== ""){
         addressInput.classList.remove("border-red-500")
         addressWarn.classList.add("hidden")
     }
-})
+});
 
 checkoutBtn.addEventListener("click", function(){
-   
-    const isOpen = checkRestaurantOpen()
-        if(!isOpen){
-            alert("Restaurante Fechado no Momento.!")
-        }
-    
+    const isOpen = checkRestaurantOpen();
+    if(!isOpen){
+      Toastify({
+        text: "Ops o restaurante está fechado no momento.!",
+        duration: 300,
+        close: true,
+        gravity: "top",
+        position: "left",
+        stopOnFocus: true,
+        style: {
+          background: "#ef4444",
+        },
+      }).showToast();
+       
+      
+      return;
+    }
    
     if(cart.length === 0) return;
     if(addressInput.value === ""){
-        addressWarn.classList.remove("hidden")
-        addressInput.classList.add("border-red-500")
+        addressWarn.classList.remove("hidden");
+        addressInput.classList.add("border-red-500");
+        return;
     }
-})
+
+    const cartItems = cart.map((item) => {
+      return `${item.name} Quantidade: ${item.quantity} Preço: R$${item.price.toFixed(2)}`;
+    }).join("\n");
+
+    const message = encodeURIComponent(cartItems);
+    const phone = "11948739869";
+
+    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank");
+
+    cart = [];
+    updateCartModal();
+});
 
 function checkRestaurantOpen(){
     const data = new Date();
@@ -139,14 +163,13 @@ function checkRestaurantOpen(){
     return hora >= 18 && hora < 22; 
 }
 
-
-const spanItem = document.getElementById("date-span")
+const spanItem = document.getElementById("date-span");
 const isOpen = checkRestaurantOpen();
 
 if(isOpen){
-    spanItem.classList.remove("bg-red-500")
-    spanItem.classList.add("bg-green-600")
+    spanItem.classList.remove("bg-red-500");
+    spanItem.classList.add("bg-green-600");
 }else{
-    spanItem.classList.remove("bg-green-600")
-    spanItem.classList.add("bg-red-500")
+    spanItem.classList.remove("bg-green-600");
+    spanItem.classList.add("bg-red-500");
 }
