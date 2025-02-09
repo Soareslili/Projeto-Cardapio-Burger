@@ -1,4 +1,3 @@
-
 const menu = document.getElementById("menu");
 const cartBtn = document.getElementById("cart-btn");
 const cartModal = document.getElementById("cart-modal");
@@ -13,19 +12,20 @@ const addressWarn = document.getElementById("address-warn");
 let cart = [];
 
 cartBtn.addEventListener("click", function () {
-  cartModal.style.display = "flex";
+  cartModal.classList.remove("hidden");
   updateCartModal();
+});
+
+closeModalBtn.addEventListener("click", function () {
+  cartModal.classList.add("hidden");
 });
 
 cartModal.addEventListener("click", function (event) {
   if (event.target === cartModal) {
-    cartModal.style.display = "none";
+    cartModal.classList.add("hidden");
   }
 });
 
-closeModalBtn.addEventListener("click", function () {
-  cartModal.style.display = "none";
-});
 
 menu.addEventListener("click", function (event) {
   let parentButton = event.target.closest(".add-to-cart-btn");
@@ -38,10 +38,10 @@ menu.addEventListener("click", function (event) {
 });
 
 function addToCart(name, price) {
-  const existinItem = cart.find((item) => item.name === name);
+  const existingItem = cart.find((item) => item.name === name);
 
-  if (existinItem) {
-    existinItem.quantity += 1;
+  if (existingItem) {
+    existingItem.quantity += 1;
   } else {
     cart.push({
       name,
@@ -49,14 +49,15 @@ function addToCart(name, price) {
       quantity: 1,
     });
   }
+
   updateCartModal();
 }
 
 function updateCartModal() {
   cartItemsContainer.innerHTML = "";
-  let total = 0;
+  let total = 0
 
-  cart.forEach((item, index) => {
+  cart.forEach(item => {
     const cartItemElement = document.createElement("div");
     cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col");
 
@@ -118,44 +119,47 @@ addressInput.addEventListener("input", function(event){
     }
 });
 
-checkoutBtn.addEventListener("click", function(){
-    const isOpen = checkRestaurantOpen();
-    if(!isOpen){
-      Toastify({
-        text: "Ops o restaurante está fechado no momento.!",
-        duration: 300,
-        close: true,
-        gravity: "top",
-        position: "left",
-        stopOnFocus: true,
-        style: {
-          background: "#ef4444",
-        },
-      }).showToast();
-       
-      
-      return;
-    }
-   
-    if(cart.length === 0) return;
-    if(addressInput.value === ""){
-        addressWarn.classList.remove("hidden");
-        addressInput.classList.add("border-red-500");
-        return;
-    }
+checkoutBtn.addEventListener("click", function () {
+  const isOpen = checkRestaurantOpen();
 
-    const cartItems = cart.map((item) => {
-      return `${item.name} Quantidade: ${item.quantity} Preço: R$${item.price.toFixed(2)}`;
-    }).join("\n");
+  if (!isOpen) {
+    Toastify({
+      text: "Ops, o restaurante está fechado no momento!",
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "left",
+      stopOnFocus: true,
+      style: { background: "#ef4444" },
+    }).showToast();
+    return;
+  }
 
-    const message = encodeURIComponent(cartItems);
-    const phone = "11948739869";
+  if (cart.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
 
-    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank");
+  if (addressInput.value.trim() === "") {
+    addressWarn.classList.remove("hidden");
+    addressInput.classList.add("border-red-500");
+    return;
+  }
 
-    cart = [];
-    updateCartModal();
+  const cartItems = cart
+    .map((item) => `${item.name} (Qtd: ${item.quantity}) - R$${item.price.toFixed(2)}`)
+    .join("\n");
+
+  const message = `Olá, segue o pedido:\n\n${cartItems}\n\nEndereço: ${addressInput.value}`;
+  const phone = "11948739869";
+
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+
+  cart = [];
+  updateCartModal();
+  cartModal.classList.add("hidden");
 });
+
 
 function checkRestaurantOpen(){
     const data = new Date();

@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" type="text/css"  href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -22,9 +22,9 @@
     <meta property="og:image" content="http://127.0.0.1:5500/assets/Hambug%20(1).png">
     <meta property="og:description" content="O melhor Hamburger da região">
     <meta property="og:osite_name" content="Hamburgueria Delicious">
-    
-    
-        <link rel="stylesheet" href="./styles/output.css" />
+
+
+    <link rel="stylesheet" href="./styles/output.css" />
 
     <title>Hamburgueria Delicious - A melhor da região</title>
 </head>
@@ -68,9 +68,9 @@
                         queijo prato e maionese da casa.</p>
 
                     <div class="flex items-center gap-2 justify-between">
-                        <p class="font-bold text-lg">R$ 18.90</p>
+                        <p class="font-bold text-lg">R$ 25</p>
                         <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Hamburger Smash"
-                            data-price="18.90">
+                            data-price="25">
 
                             <i class="fa fa-cart-plus text-lg text-white"></i>
                         </button>
@@ -145,6 +145,85 @@
                 </div>
             </div>
             <!--Fim Produto-->
+            <div class="flex gap-2">
+                <img src="./assets/hamb-5.png" alt="Hamburger Moda da Casa"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+
+                <div>
+                    <p class="font-bold">Hamburger X-salada</p>
+                    <p class="text-sm">Pão levinho de fermentação natural da Trigou, burger 160g,
+                        queijo prato e maionese da casa.</p>
+
+                    <div class="flex items-center gap-2 justify-between">
+                        <p class="font-bold text-lg">R$ 30</p>
+                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Hamburger X-Salda"
+                            data-price="30">
+
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <img src="./assets/hamb-6.png" alt="Hamburger com Fritas"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+
+                <div>
+                    <p class="font-bold">Hamburger com Fritas</p>
+                    <p class="text-sm">Pão levinho de fermentação natural da Trigou, burger 160g,
+                        queijo prato e maionese da casa.</p>
+
+                    <div class="flex items-center gap-2 justify-between">
+                        <p class="font-bold text-lg">R$ 30</p>
+                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Hamburger X-Salda"
+                            data-price="30">
+
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <img src="./assets/hamb-7.png" alt="Hamburger Cebola Empanada"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+
+                <div>
+                    <p class="font-bold">Hamburger Cebola Empanada</p>
+                    <p class="text-sm">Pão levinho de fermentação natural da Trigou, burger 160g,
+                        queijo prato e maionese da casa.</p>
+
+                    <div class="flex items-center gap-2 justify-between">
+                        <p class="font-bold text-lg">R$ 35</p>
+                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Hamburger Cebola Empanada"
+                            data-price="35">
+
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <img src="./assets/hamb-8.png" alt="Especial Hamburger Vegano"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+
+                <div>
+                    <p class="font-bold">Especial Hamburger Vegano</p>
+                    <p class="text-sm">Pão levinho de fermentação natural da Trigou, burger 160g,
+                        queijo prato e maionese da casa.</p>
+
+                    <div class="flex items-center gap-2 justify-between">
+                        <p class="font-bold text-lg">R$ 40</p>
+                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Especial Hamburger Vegano"
+                            data-price="40">
+
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
         </main>
 
@@ -202,31 +281,28 @@
 
     <!--Modal-->
 
-    <div 
-    class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden"
-    id="cart-modal"
-    >
-        <div class="bg-white p-5 dounded-md min-w-[90%] md:min-w-[600px]">
+    <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] flex items-center justify-center hidden"
+        id="cart-modal">
+        <div class="bg-white p-5 rounded-md shadow-lg w-[90%] md:w-[600px]">
             <h2 class="text-center font-bold text-2xl mb-2">Meu Carrinho</h2>
 
-            <div id="cart-items" class="flex justify-between mb-2 flex-col">
+            <div id="cart-items" class="flex flex-col gap-4"></div>
 
-                <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
+            <p class="font-bold">Total: <span id="cart-total">R$ 0,00</span></p>
 
-                <p class="font-bold mt-4">Endereço de Entrega:</p>
-                <input type="text" placeholder="Digite seu endereço completo..." id="address"
-                    class="w-full border-2 p-1 rounded my-1">
-                <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
+            <p class="font-bold mt-4">Endereço de Entrega:</p>
+            <input type="text" placeholder="Digite seu endereço completo..." id="address"
+                class="w-full border-2 p-1 rounded my-1">
+            <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
 
-                <div class="flex items-center justify-between mt-5 w-full">
-                    <button id="close-modal-btn">Fechar</button>
-                    <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar
-                        Pedido</button>
-                </div>
+            <div class="flex items-center justify-between mt-5 w-full">
+                <button id="close-modal-btn" class="bg-gray-300 px-4 py-1 rounded">Fechar</button>
+                <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar Pedido</button>
             </div>
         </div>
-        
     </div>
+
+
 
     <footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center">
         <button class="flex items-center gap-2 text-white font-bold" id="cart-btn">
@@ -237,7 +313,7 @@
     </footer>
 
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify=js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="script.js"></script>
 </body>
 
